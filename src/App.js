@@ -47,17 +47,16 @@ class App extends React.Component {
 
   }
 
-  deleteTask = (index) => {
+  deleteTask = (finishedTask) => {
   
-    // const finishedTask = this.state.tasks.filter(task => task !== key);
-    // this.setState({tasks:this.state.tasks.filter(task => task !== key)})
+    
 
-    const finishedTask = this.state.tasks.filter((task_) => {
-      return index !== index
+    const newTask = this.state.tasks.filter((task_) => {
+      return task_ !== finishedTask
     });
 
-    this.setState({ tasks:finishedTask })
-    console.log(index)
+    this.setState({ tasks:newTask })
+    console.log(finishedTask)
   }
 
 
