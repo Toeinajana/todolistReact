@@ -1,14 +1,7 @@
 import React from 'react';
 import './App.css';
-import TextField from '@material-ui/core/TextField';
-import AddBox from '@material-ui/icons/AddBox';
-import IconButton from '@material-ui/core/IconButton';
-import { makeStyles } from '@material-ui/core/styles';
-import Bin from '@material-ui/icons/DeleteForever';
-import {MDBIcon, MDBBtn} from 'mdbreact';
-import { faPlusCircle, faSmileWink } from "@fortawesome/free-solid-svg-icons";
+import { faRedoAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ListItem from './components/ListItem';
 import TodoList from './components/TodoList';
 import AddTasks from './components/AddTasks';
 
@@ -23,11 +16,9 @@ class App extends React.Component {
       tasks:[]
     };
 
-    // this.deleteTask = this.deleteTask.bind(this);
-    // this.editTask = this.editTask.bind(this);
   }
 
-  componentDidmount = () => {
+  componentDidMount = () => {
 
     const tasks = localStorage.getItem('tasks');
 
@@ -36,7 +27,7 @@ class App extends React.Component {
       this.setState({tasks : storedTasks});
     } 
     else {
-
+      console.log('null')
     }
 
   }
@@ -46,19 +37,20 @@ class App extends React.Component {
     await this.setState({tasks : [...this.state.tasks, task]})
     localStorage.setItem('tasks', JSON.stringify(this.state.tasks))
     console.log(localStorage.getItem('tasks'));
+    
 
   }
 
-  deleteTask = (finishedTask) => {
-  
-    
+  deleteTask = async (finishedTask) => {
 
     const newTask = this.state.tasks.filter((task_) => {
       return task_ !== finishedTask
     });
 
-    this.setState({ tasks:newTask })
-    console.log(finishedTask)
+     await this.setState({ tasks:newTask })
+    localStorage.setItem('tasks', JSON.stringify(this.state.tasks))
+    
+    // console.log(finishedTask)
   }
   
   editTask = (task, key) => {
@@ -67,21 +59,24 @@ class App extends React.Component {
     tasks.map(task => {
       if(task.key === key){
         
-        // this.setState({ tasks:prevtasks })
-        console.log('clicked laew')
+      console.log('clicked laew')
        task=task;
        task = localStorage.setItem('tasks', JSON.stringify(this.state.tasks))
 
       }
     })
-    // console.log(localStorage.getItem('tasks'));
       
     this.setState({
       task:tasks
     })
   }
 
+  clearList = () => {
 
+  this.setState({tasks:[]});
+  localStorage.clear();
+    
+  }
 
   render(){
 
@@ -93,15 +88,11 @@ class App extends React.Component {
  
       <div className="ListArea">
 
-        {/* <div className="textFieldArea">
-       
-        <input className="inputTodo"></input>
-        <button className="addBtn" type="submit"><FontAwesomeIcon icon={faPlusCircle} size="5x" className="" /></button>
-        </div> */}
-
                             {/* passing props */}
         <AddTasks addTodoList={this.addEachTask}/>
         <TodoList tasks={this.state.tasks} deleteTask = {this.deleteTask} editTask = {this.editTask}/>
+        <div className="clearTask" onClick={this.clearList}><FontAwesomeIcon icon={faRedoAlt} size="4x" className=""/></div>
+        
 
 
       </div>

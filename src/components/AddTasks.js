@@ -22,19 +22,19 @@ export class AddTasks extends Component {
         e.preventDefault();
     
         this.props.addTodoList(this.state.task);
-        document.getElementById('inputID').value=''; 
-        //  empty input after submit a task
 
+        //  empty input after submit a task
+        document.getElementById('inputID').value=''; 
+        
     }
 
     render() {
         return (
             
         <div className="textFieldArea">
-        {/* <span><FontAwesomeIcon icon={faSmileWink}/></span> */}
         <form onSubmit={(e) => this.addTask(e)}>
         <input id="inputID" className="inputTodo" onChange={(e) => this.updateInputTodo(e)}></input>
-        <button className="addBtn" type="submit"><FontAwesomeIcon icon={faPlusCircle} size="5x" className="" /></button>
+        <button id="addbthclick" className="addBtn" type="submit"><FontAwesomeIcon icon={faPlusCircle} size="5x" className="" /></button>
         </form>
         </div>
             
