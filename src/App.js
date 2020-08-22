@@ -19,10 +19,12 @@ class App extends React.Component {
 
     super();
     this.state = {
+      text:'',
       tasks:[]
     };
 
-    this.deleteTask = this.deleteTask.bind(this);
+    // this.deleteTask = this.deleteTask.bind(this);
+    // this.editTask = this.editTask.bind(this);
   }
 
   componentDidmount = () => {
@@ -58,6 +60,27 @@ class App extends React.Component {
     this.setState({ tasks:newTask })
     console.log(finishedTask)
   }
+  
+  editTask = (task, key) => {
+
+    var tasks = this.state.tasks;
+    tasks.map(task => {
+      if(task.key === key){
+        
+        // this.setState({ tasks:prevtasks })
+        console.log('clicked laew')
+       task=task;
+       task = localStorage.setItem('tasks', JSON.stringify(this.state.tasks))
+
+      }
+    })
+    // console.log(localStorage.getItem('tasks'));
+      
+    this.setState({
+      task:tasks
+    })
+  }
+
 
 
   render(){
@@ -78,31 +101,7 @@ class App extends React.Component {
 
                             {/* passing props */}
         <AddTasks addTodoList={this.addEachTask}/>
-        <TodoList tasks={this.state.tasks} deleteTask = {this.deleteTask}/>
-        {/* <ListItem/> */}
-       
-          
-
-
-          {/* <TextField fullWidth 
-          id="outlined-basic" 
-          label="Add to-do" 
-          variant="outlined"
-          inputProps={{
-            endAdornment: (<AddButton/>),
-            }}/> */}
-          {/* <AddBox fontSize="large"/> */}
-
-        {/* <div className="ListItem">
-          <p className="ListText">Test</p>
-        </div>
-        <div className="ListItem">
-          <p className="ListText">Test</p>
-        </div>
-        <div className="ListItem">
-          <p className="ListText">Test</p>
-        </div> */}
-
+        <TodoList tasks={this.state.tasks} deleteTask = {this.deleteTask} editTask = {this.editTask}/>
 
 
       </div>

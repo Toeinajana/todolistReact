@@ -20,6 +20,7 @@ export class AddTasks extends Component {
 
     addTask = (e) =>{
         e.preventDefault();
+    
         this.props.addTodoList(this.state.task);
         document.getElementById('inputID').value=''; 
         //  empty input after submit a task

@@ -32,6 +32,7 @@ h1{
   height: 700px;
   border-radius: 25px;
   /* opacity: 0.5; */
+  
 }
 
 
@@ -58,6 +59,19 @@ h1{
   font-family: 'Roboto', sans-serif;
 
 }
+
+.ListTextbox{
+  position: relative;
+  bottom: 10px;
+  padding-bottom: 5px;
+  font-size: 29px;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  border: none;
+  outline:none;
+  background-color:rgba(0, 0, 0, 0);
+}
+
 .MuiGrid-spacing-xs-2 > .MuiGrid-item{
   margin: auto;
 }
