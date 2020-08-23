@@ -227,7 +227,7 @@ h1{
     left: 50%;
     top: 50%;
     padding-top: 10px;
-    color: red;
+    color: black;
     transform: translate(-50%, -50%);
     cursor: pointer;
     font-size: 50px;
