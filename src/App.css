@@ -130,3 +130,136 @@ h1{
   cursor: pointer;
   
 }
+
+/* mobile */
+@media only screen and (max-width: 600px){
+
+  h1{
+    font-size: 50px;
+  }
+  
+  .App {
+    text-align: center;
+    padding-top: 40px;
+  
+  }
+  
+  .textFieldArea{
+    margin: 30px auto;
+    width: 90%;
+    padding-top: 20px;
+    
+  }
+  
+  .ListArea{
+    position: relative;
+    margin: auto;
+    background-color: aliceblue;
+    width: 700px;
+    height: 700px;
+    border-radius: 25px;
+    overflow: scroll;
+  }
+  
+  
+  .ListItem{
+    margin:auto;
+    margin-top: 20px;
+    width: 650px;
+    height: 55px;
+    background-color: white;
+    border-style: dashed;
+    border-color: chocolate;
+    border-radius: 25px;
+    padding-top: 15px;
+    
+  }
+  
+  .ListText{
+    position: relative;
+    bottom: 10px;
+    padding-bottom: 5px;
+    font-size: 29px;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+  
+  }
+  
+  .ListTextbox{
+    position: relative;
+    bottom: 10px;
+    padding-bottom: 5px;
+    font-size: 29px;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    outline:none;
+    background-color:rgba(0, 0, 0, 0);
+  }
+  
+  .clearTask{
+    position: sticky;
+    width:700px;
+    height: 100px;
+    bottom:0px;
+    border-radius: 25px;
+    background-color: aliceblue;
+    margin:auto;
+  
+  }
+  
+  .clearTask > svg{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding-top: 10px;
+    color: red;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    
+  }
+  
+  .MuiGrid-spacing-xs-2 > .MuiGrid-item{
+    margin: auto;
+  }
+  
+  .inputTodo{
+    height: 50px;
+    width: 500px;
+    position: relative;
+    border-radius: 20px;
+    font-size: 24px;
+    padding-left:17px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: -20px;
+  
+  }
+  
+  .addBtn{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    overflow: hidden;
+    outline:none;
+    position: relative;
+    padding-left: 20px;
+  
+  }
+  
+  .addBtn > svg{
+    color:black;
+    cursor: pointer;
+  }
+  
+  .delTrash {
+    color: chocolate;
+    position: relative;
+    bottom: 6px;
+    cursor: pointer;
+    
+
+
+}
+
+}

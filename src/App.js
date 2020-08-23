@@ -50,27 +50,8 @@ class App extends React.Component {
      await this.setState({ tasks:newTask })
     localStorage.setItem('tasks', JSON.stringify(this.state.tasks))
     
-    // console.log(finishedTask)
   }
   
-  editTask = (task, key) => {
-
-    var tasks = this.state.tasks;
-    tasks.map(task => {
-      if(task.key === key){
-        
-      console.log('clicked laew')
-       task=task;
-       task = localStorage.setItem('tasks', JSON.stringify(this.state.tasks))
-
-      }
-    })
-      
-    this.setState({
-      task:tasks
-    })
-  }
-
   clearList = () => {
 
   this.setState({tasks:[]});
@@ -78,19 +59,41 @@ class App extends React.Component {
     
   }
 
+  saveTask = (index) => {
+    const tasks = localStorage.getItem('tasks') || []
+    let storedTasks = JSON.parse(tasks)
+    storedTasks.splice(index, 1, this.state.tasks[index])
+
+    localStorage.setItem('tasks', JSON.stringify(storedTasks))
+  }
+
+  onChangeHandle = (value, index) =>{
+    let updatedTasks = this.state.tasks
+    updatedTasks.splice(index, 1, value)
+    
+    this.setState({tasks: updatedTasks})
+  }
+
+
   render(){
 
   
 
   return (
     <div className="App">
-      <h1 className>To-Do List</h1>
+      <h1>To-Do List</h1>
  
       <div className="ListArea">
 
                             {/* passing props */}
         <AddTasks addTodoList={this.addEachTask}/>
-        <TodoList tasks={this.state.tasks} deleteTask = {this.deleteTask} editTask = {this.editTask}/>
+        <TodoList 
+        tasks={this.state.tasks} 
+        deleteTask = {this.deleteTask} 
+        saveTask = {this.saveTask}
+        onChangeHandle = {this.onChangeHandle}
+        />
+
         <div className="clearTask" onClick={this.clearList}><FontAwesomeIcon icon={faRedoAlt} size="4x" className=""/></div>
         
 
