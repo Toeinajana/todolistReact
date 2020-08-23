@@ -8,8 +8,13 @@ export class AddTasks extends Component {
     constructor(){
         super();
         this.state = {
-            task: ''
+            task: '',
         };
+    }
+
+    handleInputValidation(){
+        return {task:''}
+
     }
 
     updateInputTodo = (e) => {
@@ -20,11 +25,17 @@ export class AddTasks extends Component {
 
     addTask = (e) =>{
         e.preventDefault();
-    
-        this.props.addTodoList(this.state.task);
 
-        //  empty input after submit a task
-        document.getElementById('inputID').value=''; 
+        if(this.handleInputValidation){
+
+            this.props.addTodoList(this.state.task);
+
+            //  empty input after submit a task
+            document.getElementById('inputID').value='';
+            this.setState({task:''}) //clear state after submit
+
+        }
+
         
     }
 
@@ -33,8 +44,8 @@ export class AddTasks extends Component {
             
         <div className="textFieldArea">
         <form onSubmit={(e) => this.addTask(e)}>
-        <input id="inputID" className="inputTodo" onChange={(e) => this.updateInputTodo(e)}></input>
-        <button id="addbthclick" className="addBtn" type="submit"><FontAwesomeIcon icon={faPlusCircle} size="5x" className="" /></button>
+        <input id="inputID" ref="inputfield" className="inputTodo" onChange={(e) => this.updateInputTodo(e)} value={this.state.task["inputfield"]}></input>
+        <button id="addbthclick" disabled={!this.state.task} className="addBtn" type="submit"><FontAwesomeIcon icon={faPlusCircle} size="5x" className="" /></button>
         </form>
         </div>
             
